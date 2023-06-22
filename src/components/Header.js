@@ -39,6 +39,33 @@ const socials = [
 
 const Header = () => {
 
+  const boxElement = useRef();
+
+  useEffect(() => {
+
+    let lastY = 0;
+
+    const handleScroll = () => {
+
+      let currentY = window.scrollY;
+
+      if (currentY > lastY || currentY == 0) {
+        boxElement.current.style.transform = "translateY(0)";
+      } else {
+        boxElement.current.style.transform = "translateY(-200px)";
+      }
+
+      
+      lastY = currentY;
+    }
+
+    document.addEventListener("scroll", handleScroll, false);
+
+
+    return () => {removeEventListener("scroll", handleScroll)};
+
+  }, [boxElement]);
+
   const handleClick = anchor => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
@@ -52,6 +79,7 @@ const Header = () => {
 
   return (
     <Box
+      ref={boxElement}
       position="fixed"
       top={0}
       left={0}
