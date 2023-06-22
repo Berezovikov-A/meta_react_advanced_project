@@ -1,0 +1,18 @@
+[
+    {
+        "brand":"github",
+        "url":"https://github.com"
+    },
+    {
+        "brand":"linkedin",
+        "url":"https://www.linkedin.com"
+    },
+    {
+        "brand":"medium",
+        "url":"https://medium.com"
+    },
+    {
+        "brand":"stack-overflow",
+        "url":"https://stackoverflow.com"
+    }
+]
