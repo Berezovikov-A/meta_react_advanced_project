@@ -17,8 +17,8 @@ import FullScreenSection from "./FullScreenSection";
 import useSubmit from "../hooks/useSubmit";
 import {useAlertContext} from "../context/alertContext";
 
-const ContactMeSection = () => {
-  const {isLoading, response, submit} = useSubmit();
+const ContactMeSection = ({ onSubmit }) => {
+  const { isLoading, response, submit } = useSubmit();
   const { onOpen } = useAlertContext();
 
   const {
@@ -34,7 +34,15 @@ const ContactMeSection = () => {
       type: "hireMe",
       comment: "",
     },
-    onSubmit: values => {submit('https://example.com/submit', values)},
+    onSubmit: values => {
+      // function for tests
+      try {
+        onSubmit(values);
+      } catch(error) {
+        console.log("not a test")
+      }
+      submit('https://example.com/submit', values);
+    },
     validationSchema: Yup.object({
       firstName: Yup.string()
         .required("Please write your name"),
@@ -53,7 +61,7 @@ const ContactMeSection = () => {
       onOpen(response.type, response.message)
       if(response.type === 'success') {
         resetForm();
-      }
+      }  
     }
   }, [response])
 
@@ -76,7 +84,7 @@ const ContactMeSection = () => {
                 <Input
                   id="firstName"
                   name="firstName"
-                  backgroundColor="white" 
+                  backgroundColor="white"
                   color="black"
                   {...getFieldProps("firstName")}
                 />
