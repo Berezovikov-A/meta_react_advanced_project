@@ -1,69 +1,30 @@
 import React, { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import {
-  faGithub,
-  faLinkedin,
-  faMedium,
-  faStackOverflow,
-} from "@fortawesome/free-brands-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
 import { Box, HStack } from "@chakra-ui/react";
+import Socials from "../assets/data/socials.json"
 
-const socials = [
-  {
-    icon: faEnvelope,
-    url: "mailto: hello@example.com",
-    key: 1,
-  },
-  {
-    icon: faGithub,
-    url: "https://github.com",
-    key: 2,
-  },
-  {
-    icon: faLinkedin,
-    url: "https://www.linkedin.com",
-    key: 3,
-  },
-  {
-    icon: faMedium,
-    url: "https://medium.com",
-    key: 4,
-  },
-  {
-    icon: faStackOverflow,
-    url: "https://stackoverflow.com",
-    key: 5,
-  },
-];
+library.add(fab);
 
 const Header = () => {
 
   const boxElement = useRef();
 
   useEffect(() => {
-
     let lastY = 0;
-
     const handleScroll = () => {
-
       let currentY = window.scrollY;
-
       if (currentY > lastY || currentY == 0) {
         boxElement.current.style.transform = "translateY(0)";
       } else {
         boxElement.current.style.transform = "translateY(-200px)";
       }
-
-      
       lastY = currentY;
     }
-
     document.addEventListener("scroll", handleScroll, false);
-
-
     return () => {removeEventListener("scroll", handleScroll)};
-
   }, [boxElement]);
 
   const handleClick = anchor => {
@@ -99,7 +60,8 @@ const Header = () => {
           alignItems="center"
         >
           <HStack spacing={8}>
-            {socials.map(({icon, url, key}) => <a href={url} key={key}><FontAwesomeIcon icon={icon} size="2x" /></a> )}
+            <a href="mailto: hello@example.com" ><FontAwesomeIcon icon={faEnvelope} size="2x"/></a> 
+            {Socials.map(({brand, url}) => <a href={url} key={brand}><FontAwesomeIcon icon={['fab', brand]} size="2x" /></a> )}
           </HStack>
           <nav>
             <HStack spacing={8}>
