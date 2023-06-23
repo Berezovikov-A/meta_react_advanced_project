@@ -1,12 +1,12 @@
 import React from "react";
 import FullScreenSection from "./FullScreenSection";
 import { Box, Heading } from "@chakra-ui/react";
-import Card from "./Card";
-import Projects from "../assets/data/projects.json"
+import ProjectCard from "./ProjectCard";
+import projects from "../assets/data/projects.json"
 
 const ProjectsSection = () => {
   return (
-    <FullScreenSection
+    <FullScreenSection  
       backgroundColor="#14532d"
       isDarkBackground
       p={8}
@@ -21,8 +21,8 @@ const ProjectsSection = () => {
         gridTemplateColumns="repeat(2,minmax(0,1fr))"
         gridGap={8}
       >
-        {Projects.map(({title, description, img}) => (
-          <Card
+        {projects.map(({title, description, img}) => (
+          <ProjectCard
             key={title}
             title={title}
             description={description}
