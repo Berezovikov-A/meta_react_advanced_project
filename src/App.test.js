@@ -1,8 +1,20 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ContactMeSection from "./components/ContactMeSection";
-import { AlertProvider } from './context/alertContext';
-import * as React from "react";
+import { AlertProvider } from "./context/alertContext";
+import App from "./App";
+
+describe("The main page", () => {
+  test("Renders anchor links", () => {
+    render(<App />);
+
+    expect(screen.getByRole("link", {name: /projects/i}))
+      .toBeInTheDocument();
+    expect(screen.getByRole("link", {name: /contact me/i}))
+      .toBeInTheDocument();
+    
+  });
+});
 
 describe("Contact Form", () => {
   
@@ -12,6 +24,7 @@ describe("Contact Form", () => {
         <ContactMeSection />
       </AlertProvider>
     );
+
     expect(screen.getByRole("heading", {name: /Contact me/i}))
       .toBeInTheDocument();
     expect(screen.getByRole("textbox", {name: /name/i}))
