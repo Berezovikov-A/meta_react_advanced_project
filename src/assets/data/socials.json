@@ -1,18 +1,18 @@
 [
     {
         "brand":"github",
-        "url":"https://github.com"
+        "url":"https://github.com/Berezovikov-A"
     },
     {
         "brand":"linkedin",
-        "url":"https://www.linkedin.com"
+        "url":"https://www.linkedin.com/in/alexey-berezovikov-81b8b0148/"
     },
     {
-        "brand":"medium",
-        "url":"https://medium.com"
+        "brand":"kaggle",
+        "url":"https://www.kaggle.com/alexeyberezovikov"
     },
     {
-        "brand":"stack-overflow",
-        "url":"https://stackoverflow.com"
+        "brand":"facebook",
+        "url":"https://www.facebook.com/alexeyberezovikov"
     }
 ]

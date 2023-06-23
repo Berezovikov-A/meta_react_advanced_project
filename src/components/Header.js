@@ -60,8 +60,13 @@ const Header = () => {
           alignItems="center"
         >
           <HStack spacing={8}>
-            <a href="mailto: hello@example.com" data-testid="mailto" ><FontAwesomeIcon icon={faEnvelope} size="2x"/></a> 
-            {Socials.map(({brand, url}) => <a href={url} key={brand} data-testid={brand}><FontAwesomeIcon icon={['fab', brand]} size="2x" /></a> )}
+            <a href="mailto: batnetman@gmail.com" data-testid="mailto" ><FontAwesomeIcon icon={faEnvelope} size="2x"/></a> 
+            {Socials.map(({brand, url}) => (
+              <a href={url} key={brand} data-testid={brand} target="_blank">
+                <FontAwesomeIcon icon={['fab', brand]} size="2x" />
+              </a>
+              )
+            )}
           </HStack>
           <nav>
             <HStack spacing={8}>
