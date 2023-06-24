@@ -45,14 +45,14 @@ const ContactMeSection = ({ onSubmit }) => {
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
-        .required("Please write your name"),
+        .required("Required"),
       email: Yup.string()
-        .email("Please write a valid email")
-        .required("Please write your email"),
+        .email("Invalid email")
+        .required("Required"),
       type: Yup.string(),
       comment: Yup.string()
-        .min(20, "Please give more details")
-        .required("Please leave a message"),
+        .min(25, "Too short")
+        .required("Required"),
     }),
   });
 
